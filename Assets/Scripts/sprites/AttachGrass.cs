@@ -14,7 +14,7 @@ public class AttachGrass : MonoBehaviour {
     void Start () {
         grassRenderer = GetComponent<MeshRenderer>();
         if (displayShader == null)
-            displayShader = Shader.Find("Legacy Shaders/Diffuse");
+            displayShader = Shader.Find("Standard");
         if (materialInstance == null)
         {
             materialInstance = new Material(displayShader);
@@ -27,7 +27,7 @@ public class AttachGrass : MonoBehaviour {
     }
 
     void FitParentTransform() {
-        grassRenderer.sharedMaterial.mainTextureScale = new Vector2(transform.parent.localScale.x, 1);
+        grassRenderer.sharedMaterial.mainTextureScale = new Vector2(transform.parent.lossyScale.x, 1);
     }
     
 	void Update () {
