@@ -5,12 +5,31 @@ using UnityEngine.UI;
 
 public class CharacterManager : MonoBehaviour {
 
+    //singleton
+    private static CharacterManager _instance;
+    public static CharacterManager Instance {
+        get {
+            if (_instance == null) {
+                _instance = GameObject.FindObjectOfType<CharacterManager>();
+            }
+            return CharacterManager._instance;
+        }
+    }
+
     public List<GameObject> hpSprites;
 
     [HideInInspector]
-    public int playerHP = 5;
-        
-	void Start () {
+    public int playerHP = 3;
+
+    void Awake() {
+        if (_instance == null) _instance = this;
+        else {
+            DestroyImmediate(this);
+            return;
+        }
+    }
+
+    void Start () {
         ActualizeLife();
     }
 
