@@ -1,32 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class CameraBehavior : MonoBehaviour {
 
-    public Transform _playerTransform;
+    public Transform playerTransform;
+    public Transform crouchPOV;
     public float xMargin = 1f;
     public float yMargin = 1f;
     public float xySmooth = 3f;
+    public float crouchDurationToPOV = 3f;
     public Transform maxXY;
     public Transform minXY;
 
     private float _targetX;
     private float _targetY;
 
-    void Start() {
+    ThirdPersonCharacter m_Character;
 
+    float countdown = 0f;
+
+    void Start() {
+        m_Character = playerTransform.GetComponent<ThirdPersonCharacter>();
+    }
+
+    void Update() {
+        if (m_Character.m_Crouching) {
+            countdown += Time.deltaTime;
+
+            if (countdown >= crouchDurationToPOV) Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, crouchPOV.position, xySmooth * Time.deltaTime);
+        }
+        else {
+            countdown = 0f;
+        }
     }
 
     void LateUpdate() {
+        if (!m_Character.m_Crouching) TrackBasic();
+
         TrackPlayer();
+    }
+
+    void TrackBasic() {
+        // Move the camera to its basic position (pivot's one)
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position, xySmooth * Time.deltaTime);
     }
 
     void TrackPlayer() {
         if (CheckXMargin()) {
-            _targetX = Mathf.Lerp(transform.position.x, _playerTransform.position.x, xySmooth * Time.deltaTime);
+            _targetX = Mathf.Lerp(transform.position.x, playerTransform.position.x, xySmooth * Time.deltaTime);
         }
         if (CheckYMargin()) {
-            _targetY = Mathf.Lerp(transform.position.y, _playerTransform.position.y, xySmooth * Time.deltaTime);
+            _targetY = Mathf.Lerp(transform.position.y, playerTransform.position.y, xySmooth * Time.deltaTime);
         }
 
         _targetX = Mathf.Clamp(_targetX, minXY.position.x, maxXY.position.x);
@@ -37,10 +62,10 @@ public class CameraBehavior : MonoBehaviour {
     }
 
     bool CheckXMargin() {
-        return Mathf.Abs(transform.position.x - _playerTransform.position.x) > xMargin;
+        return Mathf.Abs(transform.position.x - playerTransform.position.x) > xMargin;
     }
 
     bool CheckYMargin() {
-        return Mathf.Abs(transform.position.y - _playerTransform.position.y) > yMargin;
+        return Mathf.Abs(transform.position.y - playerTransform.position.y) > yMargin;
     }
 }
