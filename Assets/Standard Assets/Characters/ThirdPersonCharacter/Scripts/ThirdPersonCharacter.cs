@@ -14,9 +14,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
-		[SerializeField] float m_GroundCheckDistance = 0.1f;
-        [SerializeField] float m_FixedZ;
+		[SerializeField] float m_GroundCheckDistance = 10f;
         [SerializeField] GameObject m_Camera = null;
+
+        [HideInInspector]
+        public bool m_IsJumping;
+        [HideInInspector]
+        public bool m_Crouching;
 
         Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -28,19 +32,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		float m_CapsuleHeight;
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
-		bool m_Crouching;
+        bool _walkedLeft = false;
 
-
-		void Start()
+        void Start()
 		{
-            m_FixedZ = transform.position.z;
             m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
 			m_CapsuleHeight = m_Capsule.height;
 			m_CapsuleCenter = m_Capsule.center;
 
-			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
@@ -52,7 +54,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // turn amount and forward amount required to head in the desired
             // direction.
 			if (move.magnitude > 1f) move.Normalize();
+            
+            if (move.x < 0f) _walkedLeft = true;
+            else if (move.x > 0f) _walkedLeft = false;
+
             transform.forward = m_Camera.transform.right * (move.x < 0 ? -1 : 1);
+            if (_walkedLeft)  transform.forward = m_Camera.transform.right * -1;
+
             move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
@@ -75,7 +83,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
-            transform.position.Set(transform.position.x, transform.position.y, m_FixedZ);
         }
 
 
@@ -123,6 +130,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetBool("Crouch", m_Crouching);
+            m_Animator.SetBool("Jumping", m_IsJumping);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
 			if (!m_IsGrounded)
 			{
@@ -206,7 +214,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				m_GroundNormal = hitInfo.normal;
 				m_IsGrounded = true;
-				m_Animator.applyRootMotion = true;
+                m_Animator.applyRootMotion = true;
 			}
 			else
 			{
