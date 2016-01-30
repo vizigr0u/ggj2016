@@ -22,7 +22,7 @@ public class AttachGrass : MonoBehaviour {
             grassRenderer.sharedMaterial = materialInstance;
         }
         // hide ground white block
-        GetComponentInParent<MeshRenderer>().enabled = Application.isEditor;
+        transform.parent.GetComponent<MeshRenderer>().enabled = !Application.isPlaying;
         FitParentTransform();
     }
 
