@@ -16,14 +16,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
         [SerializeField] float m_FixedZ;
-
+        [SerializeField] GameObject m_Camera = null;
 
         Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
-		float m_TurnAmount;
 		float m_ForwardAmount;
 		Vector3 m_GroundNormal;
 		float m_CapsuleHeight;
@@ -53,10 +52,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // turn amount and forward amount required to head in the desired
             // direction.
 			if (move.magnitude > 1f) move.Normalize();
+            transform.forward = m_Camera.transform.right * (move.x < 0 ? -1 : 1);
             move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-			m_TurnAmount = Mathf.Atan2(move.x, move.z);
 			m_ForwardAmount = move.z;
 
 			//ApplyExtraTurnRotation();
@@ -76,7 +75,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
-            transform.forward.Set(move.z, transform.forward.y, transform.forward.z);
             transform.position.Set(transform.position.x, transform.position.y, m_FixedZ);
         }
 
@@ -124,7 +122,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		{
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
-			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetBool("Crouch", m_Crouching);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
 			if (!m_IsGrounded)
@@ -180,14 +177,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_GroundCheckDistance = 0.1f;
 			}
 		}
-
-		/*void ApplyExtraTurnRotation()
-		{
-			// help the character turn faster (this is in addition to root rotation in the animation)
-			float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
-		}*/
-
 
 		public void OnAnimatorMove()
 		{
