@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetButtonDown("Jump")) {
                 _isJumping = true;
                 _rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+
+                int _random = Random.Range(9, 14);
+                SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
             }
 
             if (Input.GetAxis("Vertical") <= -0.9f) {
@@ -60,7 +63,7 @@ public class PlayerController : MonoBehaviour {
             gameObject.layer = 9;
         }
         else if (_rigidbody2D.velocity.y <= 0 && !_boxCollider2D.IsTouchingLayers(groundLayers)) {
-            gameObject.layer = 0;
+            gameObject.layer = 14;
         }
         
         //modify player's boxcollider depending on his state
@@ -109,6 +112,11 @@ public class PlayerController : MonoBehaviour {
 	}
 
     void Attack() {
+        if (!_isAttacking) {
+            int _random = Random.Range(3, 7);
+            SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
+        }
+
         _isAttacking = true;
         _attackRandomizer = Random.Range(1, 3);
     }
@@ -130,5 +138,12 @@ public class PlayerController : MonoBehaviour {
 
     public void AllowHit() {
         _allowHit = true;
+    }
+
+    public void PlayStepSound() {
+        if (_isGrounded) {
+            int _random = Random.Range(0, 3);
+            SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
+        }
     }
 }

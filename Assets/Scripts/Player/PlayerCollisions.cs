@@ -7,6 +7,8 @@ public class PlayerCollisions : MonoBehaviour {
         if (_col.gameObject.tag.Equals("LifeCollectible")) {
             PlayerManager.Instance.UpdateLife(-1);
             Destroy(_col.gameObject);
+
+            SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[14]);
         }
     }
 }

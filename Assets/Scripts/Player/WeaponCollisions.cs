@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class WeaponCollisions : MonoBehaviour {
 
@@ -24,27 +25,34 @@ public class WeaponCollisions : MonoBehaviour {
                     _hitInfo.collider.GetComponent<EnemyData>().UpdateLife(_player.GetComponent<PlayerManager>().weaponConfig.Damage);
                     _hitInfo.collider.GetComponentInChildren<ParticleSystem>().Play();
                     _hitInfo.collider.transform.localScale *= 0.8f;
+
+                    int _random = Random.Range(15, 20);
+                    SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
                 }
 
                 if (_hitInfo.collider.tag.Equals("Barrier")) {
                     _hitInfo.collider.GetComponent<EnemyData>().UpdateLife(_player.GetComponent<PlayerManager>().weaponConfig.Damage);
                     _hitInfo.collider.GetComponentInChildren<ParticleSystem>().Play();
+
+                    int _random = Random.Range(7, 9);
+                    SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
+                }
+
+                if (SceneManager.GetActiveScene().name == "Introduction") {
+                    if (_hitInfo.collider.tag.Equals("GrandFather")) {
+                        if (PapyFirstDialogManager.Instance.canBeAttacked) {
+                            PapyFirstDialogManager.Instance.PlaySound();
+                            int _random = Random.Range(7, 9);
+                            SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
+
+                            PapyFirstDialogManager.Instance.attackCount++;
+                            PapyFirstDialogManager.Instance.canBeAttacked = false;
+                        }
+                    }
                 }
             }
         }
 
         _player.GetComponent<PlayerController>()._allowHit = false;
     }
-
-	/*void OnTriggerStay2D(Collider2D _col) {
-        Debug.Log("lol");
-
-        if (_player.GetComponent<PlayerController>()._allowHit) {
-            if (_col.gameObject.tag.Equals("Bush")) {
-                _col.GetComponent<EnemyData>().UpdateLife(_player.GetComponent<PlayerManager>().weaponConfig.Damage);
-            }
-        }
-
-        _player.GetComponent<PlayerController>()._allowHit = false;
-    }*/
 }
