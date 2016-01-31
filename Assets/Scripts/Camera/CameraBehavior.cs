@@ -8,6 +8,7 @@ public class CameraBehavior : MonoBehaviour {
     public float xMargin = 1f;
     public float yMargin = 1f;
     public float xySmooth = 3f;
+    public float yCameraMargin = 3f;
     public float crouchDurationToPOV = 3f;
     public Transform maxXY;
     public Transform minXY;
@@ -50,7 +51,7 @@ public class CameraBehavior : MonoBehaviour {
             _targetX = Mathf.Lerp(transform.position.x, playerTransform.position.x, xySmooth * Time.deltaTime);
         }
         if (CheckYMargin()) {
-            _targetY = Mathf.Lerp(transform.position.y, playerTransform.position.y, xySmooth * Time.deltaTime);
+            _targetY = Mathf.Lerp(transform.position.y, playerTransform.position.y + yCameraMargin, xySmooth * Time.deltaTime);
         }
 
         _targetX = Mathf.Clamp(_targetX, minXY.position.x, maxXY.position.x);

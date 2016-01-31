@@ -7,13 +7,20 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 700f;
     public Transform groundCheck;
     public LayerMask groundLayers;
+    public GameObject weaponHitbox;
 
-    private bool _facingRight = true;
+    [HideInInspector]
+    public bool _facingRight = true;
     private bool _isGrounded = false;
     private float _groundRadius = 0.2f;
     private bool _isJumping = false;
     [HideInInspector]
     public bool _isCrouching = false;
+    [HideInInspector]
+    public bool _isAttacking = false;
+    [HideInInspector]
+    public bool _allowHit = false;
+    private int _attackRandomizer;
 
     Transform _transform;
     Rigidbody2D _rigidbody2D;
@@ -41,6 +48,18 @@ public class PlayerController : MonoBehaviour {
             else {
                 _isCrouching = false;
             }
+
+            if (Input.GetButtonDown("Attack")) {
+                Attack();
+            }
+        }
+        
+        //one way platform
+        if (_rigidbody2D.velocity.y > 0) {
+            gameObject.layer = 9;
+        }
+        else if (_rigidbody2D.velocity.y <= 0 && !_boxCollider2D.IsTouchingLayers(groundLayers)) {
+            gameObject.layer = 0;
         }
         
         //modify player's boxcollider depending on his state
@@ -52,15 +71,18 @@ public class PlayerController : MonoBehaviour {
         //}
         else {
             _boxCollider2D.offset = new Vector2(0.001f, -0.15f);
-        }
+        } 
     }
 	
 	void FixedUpdate () {
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, _groundRadius, groundLayers);
+
         _animator.SetBool("Grounded", _isGrounded);
         _animator.SetBool("Jumping", _isJumping);
+        _animator.SetBool("Attacking", _isAttacking);
 
         _animator.SetFloat("vSpeed", _rigidbody2D.velocity.y);
+        _animator.SetInteger("AttackRandomizer", _attackRandomizer);
 
         float _move = Input.GetAxis("Horizontal");
 
@@ -77,6 +99,11 @@ public class PlayerController : MonoBehaviour {
             Flip();
         }
 	}
+
+    void Attack() {
+        _isAttacking = true;
+        _attackRandomizer = Random.Range(1, 3);
+    }
     
     void Flip() {
         _facingRight = !_facingRight;
@@ -87,5 +114,13 @@ public class PlayerController : MonoBehaviour {
 
     public void JumpingFalse() {
         _isJumping = false;
+    }
+
+    public void AttackingFalse() {
+        _isAttacking = false;
+    }
+
+    public void AllowHit() {
+        _allowHit = true;
     }
 }

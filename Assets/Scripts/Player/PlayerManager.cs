@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public List<GameObject> hpSprites;
+    public WeaponConfiguration weaponConfig;
 
     [HideInInspector]
     public int playerHP = 3;
