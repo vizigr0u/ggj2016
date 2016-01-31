@@ -10,27 +10,43 @@ public class RepeatSprite : MonoBehaviour {
     public bool RepeatX = true;
     public bool RepeatY = true;
     
-    private MeshRenderer spriteRenderer;
+    private MeshRenderer spriteRenderer = null;
     private static Material MaterialRef = null;
-    private Material materialInstance = null;
+    [SerializeField]private Material materialInstance = null;
 
     void Start () {
-        spriteRenderer = GetComponent<MeshRenderer>();
+        Init();
+    }
+
+    void Init()
+    {
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<MeshRenderer>();
+        }
         if (MaterialRef == null)
         {
-            MaterialRef = (Material)Resources.Load("SpriteRepeat", typeof(Material));
+            MaterialRef = (Material)Resources.Load("Materials/SpriteRepeat", typeof(Material));
         }
         if (materialInstance == null)
         {
-            materialInstance = new Material(MaterialRef);
+            if (!Application.isPlaying)
+            {
+                materialInstance = new Material(MaterialRef);
+                spriteRenderer.sharedMaterial = materialInstance;
+            }
+            else
+                materialInstance = spriteRenderer.sharedMaterial;
+        }
+        if (materialInstance.mainTexture != TextureToRepeat)
+        {
             materialInstance.mainTexture = TextureToRepeat;
-            spriteRenderer.sharedMaterial = materialInstance;
         }
         FitScale();
     }
 
     void FitScale() {
-        float textureRatio = materialInstance.mainTexture.width / materialInstance.mainTexture.height;
+        float textureRatio = (float) materialInstance.mainTexture.width / (float) materialInstance.mainTexture.height;
         TextureSize = Mathf.Max(0.01f, TextureSize);
         Vector2 TextureScale = new Vector2(textureRatio, 1f) * TextureSize;
         materialInstance.mainTextureScale = 
@@ -41,10 +57,7 @@ public class RepeatSprite : MonoBehaviour {
     
 	void Update () {
 #if UNITY_EDITOR
-        if (materialInstance.mainTexture != TextureToRepeat) {
-            materialInstance.mainTexture = TextureToRepeat;
-        }
-        FitScale();
+        Init();
 #endif
     }
 }
