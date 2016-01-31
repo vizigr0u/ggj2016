@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class Parallax : MonoBehaviour {
     public float LeftBorder = 1.0f;
     public float RightBorder = 1.0f;
@@ -54,6 +55,13 @@ public class Parallax : MonoBehaviour {
     }
 	
 	void Update () {
+#if UNITY_EDITOR
+        GetExtremumOffsets();
+#endif
+        if(!Application.isPlaying)
+        {
+            return;
+        }
         Vector3 posd = Camera.main.transform.position - lastCameraPos;
         lastCameraPos = Camera.main.transform.position;
         transform.position += posd * transform.position.z;
