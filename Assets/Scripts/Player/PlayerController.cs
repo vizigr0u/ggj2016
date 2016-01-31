@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public LayerMask groundLayers;
     public GameObject weaponHitbox;
     public bool CanMove = true;
+    public bool canJump = true;
 
     [HideInInspector]
     public bool _facingRight = true;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         //inputs
-        if (_isGrounded && CanMove) {
+        if (_isGrounded && CanMove && canJump) {
             if (Input.GetButtonDown("Jump")) {
                 _isJumping = true;
                 _rigidbody2D.AddForce(new Vector2(0f, jumpForce));

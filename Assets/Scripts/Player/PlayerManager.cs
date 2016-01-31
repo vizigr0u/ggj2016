@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -30,6 +31,10 @@ public class PlayerManager : MonoBehaviour {
         else {
             DestroyImmediate(this);
             return;
+        }
+
+        if (SceneManager.GetActiveScene().name == "level1") {
+            GetComponent<PlayerController>().canJump = false;
         }
     }
 

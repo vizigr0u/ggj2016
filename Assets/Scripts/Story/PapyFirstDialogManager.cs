@@ -162,7 +162,7 @@ public class PapyFirstDialogManager : MonoBehaviour {
             ActualizeEndChoice();
 
             if (Input.GetButtonDown("Jump") && _actualWeaponChoice == 0f) {
-                SceneManager.LoadScene("Level_01");
+                SceneManager.LoadScene("level1");
             }
         }
     }
