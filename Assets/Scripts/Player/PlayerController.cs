@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 700f;
     public Transform groundCheck;
     public LayerMask groundLayers;
+    public bool CanMove = true;
 
     private bool _facingRight = true;
     private bool _isGrounded = false;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         //inputs
-        if (_isGrounded) {
+        if (_isGrounded && CanMove) {
             if (Input.GetButtonDown("Jump")) {
                 _isJumping = true;
                 _rigidbody2D.AddForce(new Vector2(0f, jumpForce));
@@ -56,6 +57,12 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
+        if (!CanMove)
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+            _animator.SetFloat("Speed", 0f);
+            return;
+        }
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, _groundRadius, groundLayers);
         _animator.SetBool("Grounded", _isGrounded);
         _animator.SetBool("Jumping", _isJumping);
