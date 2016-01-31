@@ -20,11 +20,16 @@ public class DialogTrigger : MonoBehaviour {
 
     public enum DialogType
     {
-        FirstEncounter, NotTheRightWeapon
+        IceFail, JumpChest, Fuis, Inoffensif, Monte, BonChemin
     };
 
     static private Dictionary<DialogType, DialogConfig[]> Dialogs = new Dictionary<DialogType, DialogConfig[]> {
-        { DialogType.FirstEncounter, new DialogConfig[] { new DialogConfig("Salut c'est moi papy", 4, "JeTeLavaisDit") } }
+        { DialogType.IceFail, new DialogConfig[] { new DialogConfig("Oh ! J'aurai dû te prévenir, à l'époque de Bork la glace, il faisait bien plus froid.. Bonne chance !", 7.5f, "JAuraisDuTePrevenir...Bork") } },
+        { DialogType.JumpChest, new DialogConfig[] { new DialogConfig("Tu devrais sauter. Tu pourrais trouver un trésor !", 3f, "TuDevraisSauter....") } },
+        { DialogType.Fuis, new DialogConfig[] { new DialogConfig("Fuis ! Tu ne peux pas le vaincre !", 3f, "FuisPeuxPasVaincre") } },
+        { DialogType.Inoffensif, new DialogConfig[] { new DialogConfig("Celui-là est inoffensif.", 2f, "CeluiLaInnoffensif") } },
+        { DialogType.Monte, new DialogConfig[] { new DialogConfig("Il y a peut-être quelque chose d'intéressant en haut... Oui, les souvenirs me reviennent, grimpe.", 5f, "Peut-EtreQuelqueChoseInteressant") } },
+        { DialogType.BonChemin, new DialogConfig[] { new DialogConfig("Tu es... en bonne voie.", 2f, "TuEsEnBonneVoie2") } },
     };
     
     public DialogType Dialog;
@@ -34,6 +39,7 @@ public class DialogTrigger : MonoBehaviour {
 
     private bool _countdownON = false;
     private float _globalDialogLength;
+    private bool _needToPlay = true;
 
     GameObject _grandFather;
     GameObject dialogText;
@@ -50,7 +56,7 @@ public class DialogTrigger : MonoBehaviour {
             if (_globalDialogLength <= 0f) {
                 dialogText.GetComponent<Animator>().SetBool("FadeIn", false);
                 dialogText.GetComponent<Animator>().SetBool("FadeOut", true);
-                _grandFather.GetComponent<MeshRenderer>().enabled = false;
+                _grandFather.GetComponent<SpriteRenderer>().enabled = false;
 
                 _countdownON = false;
             }
@@ -58,24 +64,25 @@ public class DialogTrigger : MonoBehaviour {
 	}
 
     void OnTriggerEnter2D(Collider2D _col) {
-        if (_col.gameObject.tag.Equals("Player")) {
+        if (_col.gameObject.tag.Equals("Player") && _needToPlay) {
             //reset the fadeout bool previously changed to true
             dialogText.GetComponent<Animator>().SetBool("FadeOut", false);
             var configs = Dialogs[Dialog];
             var randConfig = configs[Random.Range(0, configs.Length)];
             PlayDialog(randConfig);
+            _needToPlay = false;
         }
     }
 
     void PlayDialog(DialogConfig config) {
         Display(config);
 
-        var audio = (AudioClip)Resources.Load(config.audio, typeof(AudioClip));
+        var audio = (AudioClip)Resources.Load("Voices/" + config.audio, typeof(AudioClip));
         _grandFather.GetComponent<AudioSource>().PlayOneShot(audio);
     }
 
     void Display(DialogConfig config) {
-        _grandFather.GetComponent<MeshRenderer>().enabled = true;
+        _grandFather.GetComponent<SpriteRenderer>().enabled = true;
 
         //sets the text's string
         dialogText.GetComponent<Text>().text = config.text;

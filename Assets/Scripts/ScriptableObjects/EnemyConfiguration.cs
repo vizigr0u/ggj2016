@@ -13,8 +13,8 @@ public class EnemyConfiguration : ScriptableObject {
     }
 
     [SerializeField]
-    float _damage = 0f;
-    public float Damage {
+    int _damage = 0;
+    public int Damage {
         get { return _damage; }
     }
 

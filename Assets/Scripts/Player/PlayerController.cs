@@ -150,4 +150,8 @@ public class PlayerController : MonoBehaviour {
             SoundsManager.Instance.PlaySound(SoundsManager.Instance.sounds[_random]);
         }
     }
+
+    public void PlayBurnSound() {
+        GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Sounds/EpeeQuiFond"));
+    }
 }

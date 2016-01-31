@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: RabbitConfiguration
   m_EditorClassIdentifier: 
   _healthPoints: 50
-  _damage: 0
-  _moveSpeed: 0
+  _damage: 1
+  _moveSpeed: 2

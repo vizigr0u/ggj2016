@@ -20,8 +20,8 @@ public class PlayerManager : MonoBehaviour {
     public List<GameObject> hpSprites;
     public WeaponConfiguration weaponConfig;
     public bool canBeTouched = true;
+    public List<WeaponConfiguration> weaponConfigs;
 
-    [HideInInspector]
     public int playerHP = 5;
 
     private float _invincibleCountdown = 3f;
@@ -33,8 +33,13 @@ public class PlayerManager : MonoBehaviour {
             return;
         }
 
+        if (SceneManager.GetActiveScene().name == "Introduction") {
+            PlayerManager.Instance.weaponConfig = PlayerManager.Instance.weaponConfigs[0];
+        }
+
         if (SceneManager.GetActiveScene().name == "level1") {
-            GetComponent<PlayerController>().canJump = false;
+            PlayerManager.Instance.weaponConfig = PlayerManager.Instance.weaponConfigs[1];
+            // GetComponent<PlayerController>().canJump = false;
         }
     }
 

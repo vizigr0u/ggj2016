@@ -9,6 +9,7 @@ public class RabbitController : MonoBehaviour {
     public LayerMask groundLayers;
     public Transform startPosition;
     public Transform endPosition;
+    public RectTransform healthBar;
 
     [HideInInspector]
     public bool _facingRight = true;
@@ -34,13 +35,20 @@ public class RabbitController : MonoBehaviour {
         if (GetComponent<EnemyData>()._actualHealth <= 0f) {
             Touched();
         }
+
+        if (_facingRight) {
+            healthBar.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (!_facingRight) {
+            healthBar.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     void FixedUpdate() {
         if (Vector3.Distance(transform.position, _player.transform.position) <= 4.0f && !_hasTouched) {
             _isFollowingPlayer = true;
 
-            Vector3 _direction = (_player.transform.position - transform.position).normalized * (maxSpeed * 1.05f);
+            Vector3 _direction = (_player.transform.position - transform.position).normalized * (GetComponent<EnemyData>().config.MoveSpeed * 1.05f);
 
             _rigidbody2D.velocity = _direction;
         }
@@ -56,12 +64,12 @@ public class RabbitController : MonoBehaviour {
         _animator.SetFloat("Speed", Mathf.Abs(_rigidbody2D.velocity.x));
 
         if (_isGoingToEnd && !_hasTouched && !_isFollowingPlayer) {
-            Vector3 _direction = (endPosition.position - transform.position).normalized * maxSpeed;
+            Vector3 _direction = (endPosition.position - transform.position).normalized * GetComponent<EnemyData>().config.MoveSpeed;
 
             _rigidbody2D.velocity = _direction;
         }
         else if (!_isGoingToEnd && !_hasTouched && !_isFollowingPlayer) {
-            Vector3 _direction = (startPosition.position - transform.position).normalized * maxSpeed;
+            Vector3 _direction = (startPosition.position - transform.position).normalized * GetComponent<EnemyData>().config.MoveSpeed;
 
             _rigidbody2D.velocity = _direction;
         }
@@ -100,7 +108,7 @@ public class RabbitController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D _col) {
         if (_col.gameObject.tag.Equals("Player") && PlayerManager.Instance.canBeTouched) {
-            PlayerManager.Instance.UpdateLife(1);
+            PlayerManager.Instance.UpdateLife(GetComponent<EnemyData>().config.Damage);
             PlayerManager.Instance.canBeTouched = false;
 
             Touched();
