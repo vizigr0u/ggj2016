@@ -15,8 +15,6 @@ public class EnemyData : MonoBehaviour {
         if (_actualHealth <= 0f && !GetComponentInChildren<ParticleSystem>().isPlaying) {
             Destroy(gameObject);
         }
-
-        Debug.Log(_actualHealth);
     }
 
     public void UpdateLife(float _damage) {

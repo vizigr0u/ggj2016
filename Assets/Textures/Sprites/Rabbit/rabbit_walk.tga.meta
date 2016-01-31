@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: b007f02a8c3b04444914bf7384f0ab0a
-timeCreated: 1454222205
+timeCreated: 1454232364
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: rabbit_walk_0
+    21300002: rabbit_walk_1
+    21300004: rabbit_walk_2
+    21300006: rabbit_walk_3
+    21300008: rabbit_walk_4
+    21300010: rabbit_walk_5
+    21300012: rabbit_walk_6
+    21300014: rabbit_walk_7
+    21300016: rabbit_walk_8
+    21300018: rabbit_walk_9
+    21300020: rabbit_walk_10
+    21300022: rabbit_walk_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +38,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 2048
+  textureFormat: -3
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +50,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +61,92 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: rabbit_walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22, y: 30}
+        - {x: 14, y: 40}
+        - {x: 9, y: 43}
+        - {x: -5, y: 60}
+        - {x: -5, y: 65}
+        - {x: -6, y: 69}
+        - {x: -5, y: 65}
+        - {x: 0, y: 56}
+        - {x: 15, y: 54}
+        - {x: 26, y: 59}
+        - {x: 12, y: 99}
+        - {x: -31, y: 99}
+        - {x: -59, y: 24}
+        - {x: -59, y: -63}
+        - {x: -46, y: -105}
+        - {x: -39, y: -108}
+        - {x: 29, y: -108}
+        - {x: 40, y: -98}
+        - {x: 40, y: -32}
+        - {x: 27, y: 13}
+    - name: rabbit_walk_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38, y: 101}
+        - {x: 18, y: 122}
+        - {x: -9, y: 122}
+        - {x: -25, y: 111}
+        - {x: -72, y: 44}
+        - {x: -72, y: -41}
+        - {x: -20, y: -100}
+        - {x: 19, y: -100}
+        - {x: 29, y: -82}
+        - {x: 24, y: -63}
+        - {x: 17, y: -56}
+        - {x: 38, y: 28}
+    - name: rabbit_walk_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22, y: 30}
+        - {x: 14, y: 40}
+        - {x: 9, y: 43}
+        - {x: -5, y: 60}
+        - {x: -5, y: 65}
+        - {x: -6, y: 69}
+        - {x: -5, y: 65}
+        - {x: 0, y: 56}
+        - {x: 15, y: 54}
+        - {x: 26, y: 59}
+        - {x: 12, y: 99}
+        - {x: -31, y: 99}
+        - {x: -59, y: 24}
+        - {x: -59, y: -63}
+        - {x: -46, y: -105}
+        - {x: -39, y: -108}
+        - {x: 29, y: -108}
+        - {x: 40, y: -98}
+        - {x: 40, y: -32}
+        - {x: 27, y: 13}
     outline: []
   spritePackingTag: 
   userData: 

@@ -7,11 +7,8 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 700f;
     public Transform groundCheck;
     public LayerMask groundLayers;
-<<<<<<< .merge_file_a14188
     public GameObject weaponHitbox;
-=======
     public bool CanMove = true;
->>>>>>> .merge_file_a03156
 
     [HideInInspector]
     public bool _facingRight = true;
@@ -90,6 +87,7 @@ public class PlayerController : MonoBehaviour {
         _animator.SetBool("Grounded", _isGrounded);
         _animator.SetBool("Jumping", _isJumping);
         _animator.SetBool("Attacking", _isAttacking);
+        _animator.SetBool("IsInvincible", !PlayerManager.Instance.canBeTouched);
 
         _animator.SetFloat("vSpeed", _rigidbody2D.velocity.y);
         _animator.SetInteger("AttackRandomizer", _attackRandomizer);

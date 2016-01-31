@@ -18,9 +18,12 @@ public class PlayerManager : MonoBehaviour {
 
     public List<GameObject> hpSprites;
     public WeaponConfiguration weaponConfig;
+    public bool canBeTouched = true;
 
     [HideInInspector]
     public int playerHP = 3;
+
+    private float _invincibleCountdown = 3f;
 
     void Awake() {
         if (_instance == null) _instance = this;
@@ -32,6 +35,18 @@ public class PlayerManager : MonoBehaviour {
 
     void Start () {
         ActualizeLife();
+    }
+
+    void Update() {
+        if (!PlayerManager.Instance.canBeTouched) {
+            _invincibleCountdown -= Time.deltaTime;
+
+            if (_invincibleCountdown <= 0f) {
+
+                _invincibleCountdown = 2f;
+                PlayerManager.Instance.canBeTouched = true;
+            }
+        }
     }
 
     public void UpdateLife(int _damage) {
