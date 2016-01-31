@@ -1,9 +1,11 @@
 fileFormatVersion: 2
 guid: f384f392f20caf7498840401254d260e
-timeCreated: 1454237239
+timeCreated: 1454252465
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: attack_icedown_0
+    21300002: attack_icedown_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +28,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 2048
+  textureFormat: -3
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +40,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +51,62 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: attack_icedown_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23, y: 121}
+        - {x: 1, y: 117}
+        - {x: -42, y: 75}
+        - {x: -42, y: -66}
+        - {x: -31, y: -105}
+        - {x: 54, y: -105}
+        - {x: 76, y: -51}
+        - {x: 76, y: 99}
+        - {x: 64, y: 121}
+    - name: attack_icedown_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 105, y: 46}
+        - {x: 96, y: 60}
+        - {x: 59, y: 50}
+        - {x: 61, y: 39}
+        - {x: 63, y: 33}
+        - {x: 66, y: 30}
+        - {x: 71, y: 31}
+        - {x: 66, y: 30}
+        - {x: 64, y: 30}
+        - {x: 60, y: 33}
+        - {x: 2, y: 60}
+        - {x: -42, y: 60}
+        - {x: -95, y: 18}
+        - {x: -95, y: -23}
+        - {x: -94, y: -25}
+        - {x: -80, y: -24}
+        - {x: -69, y: -15}
+        - {x: -68, y: -71}
+        - {x: -60, y: -101}
+        - {x: -14, y: -106}
+        - {x: 41, y: -106}
+        - {x: 51, y: -93}
+        - {x: 39, y: -82}
+        - {x: 105, y: -21}
     outline: []
   spritePackingTag: 
   userData: 

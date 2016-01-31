@@ -5,7 +5,8 @@ public class EnemyData : MonoBehaviour {
 
     public EnemyConfiguration config;
 
-    float _actualHealth;
+    [HideInInspector]
+    public float _actualHealth;
 
     void Start() {
         _actualHealth = config.HealthPoints;

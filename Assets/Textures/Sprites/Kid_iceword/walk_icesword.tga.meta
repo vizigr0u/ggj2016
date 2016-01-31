@@ -1,9 +1,17 @@
 fileFormatVersion: 2
 guid: f1e296cf33bc4df4a87f69110630857f
-timeCreated: 1454237238
+timeCreated: 1454252461
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: walk_icesword_0
+    21300002: walk_icesword_1
+    21300004: walk_icesword_2
+    21300006: walk_icesword_3
+    21300008: walk_icesword_4
+    21300010: walk_icesword_5
+    21300012: walk_icesword_6
+    21300014: walk_icesword_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +34,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 2048
+  textureFormat: -3
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +46,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +57,206 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: walk_icesword_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: -49}
+        - {x: 33, y: -35}
+        - {x: 31, y: -31}
+        - {x: 38, y: -40}
+        - {x: 51, y: -42}
+        - {x: 84, y: -26}
+        - {x: 38, y: 74}
+        - {x: -50, y: 74}
+        - {x: -62, y: 64}
+        - {x: -81, y: -15}
+        - {x: -81, y: -54}
+        - {x: -52, y: -99}
+        - {x: 70, y: -99}
+        - {x: 94, y: -78}
+        - {x: 94, y: -69}
+        - {x: 61, y: -49}
+    - name: walk_icesword_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 85, y: 17}
+        - {x: 23, y: 65}
+        - {x: -40, y: 65}
+        - {x: -48, y: 57}
+        - {x: -97, y: -8}
+        - {x: -97, y: -38}
+        - {x: -44, y: -96}
+        - {x: -36, y: -92}
+        - {x: -33, y: -89}
+        - {x: 1, y: -104}
+        - {x: 71, y: -104}
+        - {x: 75, y: -98}
+        - {x: 71, y: -86}
+        - {x: 85, y: -54}
+    - name: walk_icesword_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75, y: -17}
+        - {x: 126, y: 40}
+        - {x: 126, y: 55}
+        - {x: 125, y: 56}
+        - {x: 121, y: 55}
+        - {x: 38, y: 78}
+        - {x: -29, y: 78}
+        - {x: -39, y: 65}
+        - {x: -39, y: -50}
+        - {x: -34, y: -93}
+        - {x: -8, y: -104}
+        - {x: 31, y: -104}
+        - {x: 41, y: -88}
+        - {x: 27, y: -78}
+        - {x: 19, y: -76}
+    - name: walk_icesword_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 33}
+        - {x: -38, y: -98}
+        - {x: -27, y: -102}
+        - {x: 64, y: -102}
+        - {x: 125, y: 49}
+        - {x: 125, y: 114}
+        - {x: 27, y: 114}
+        - {x: -25, y: 102}
+    - name: walk_icesword_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 123}
+        - {x: -50, y: 43}
+        - {x: -50, y: -100}
+        - {x: 48, y: -100}
+        - {x: 94, y: -84}
+        - {x: 124, y: 48}
+        - {x: 124, y: 123}
+    - name: walk_icesword_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 114, y: 3}
+        - {x: 126, y: 90}
+        - {x: 126, y: 128}
+        - {x: 61, y: 128}
+        - {x: -60, y: 55}
+        - {x: -63, y: 16}
+        - {x: -63, y: -43}
+        - {x: -54, y: -44}
+        - {x: -45, y: -41}
+        - {x: -41, y: -36}
+        - {x: -39, y: -30}
+        - {x: -32, y: -36}
+        - {x: -63, y: -52}
+        - {x: -63, y: -88}
+        - {x: -62, y: -101}
+        - {x: -60, y: -102}
+        - {x: 20, y: -102}
+        - {x: 55, y: -95}
+        - {x: 69, y: -88}
+        - {x: 69, y: -82}
+    - name: walk_icesword_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 70}
+        - {x: 88, y: 52}
+        - {x: 54, y: 26}
+        - {x: 46, y: 61}
+        - {x: 10, y: 78}
+        - {x: -25, y: 78}
+        - {x: -39, y: 67}
+        - {x: -39, y: -53}
+        - {x: -24, y: -92}
+        - {x: 40, y: -92}
+        - {x: 119, y: 27}
+        - {x: 127, y: 57}
+        - {x: 127, y: 69}
+    - name: walk_icesword_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: -52}
+        - {x: 15, y: -56}
+        - {x: 13, y: -61}
+        - {x: 12, y: -64}
+        - {x: 30, y: -90}
+        - {x: 90, y: -90}
+        - {x: 125, y: -6}
+        - {x: 125, y: 40}
+        - {x: 37, y: 82}
+        - {x: -20, y: 82}
+        - {x: -50, y: -6}
+        - {x: -50, y: -67}
+        - {x: -33, y: -82}
+        - {x: -9, y: -90}
+        - {x: 5, y: -90}
+        - {x: 13, y: -82}
+        - {x: -1, y: -60}
+        - {x: 16, y: -54}
     outline: []
   spritePackingTag: 
   userData: 

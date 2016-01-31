@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public bool _isAttacking = false;
     [HideInInspector]
+    public bool _checkWindSound = false;
+    [HideInInspector]
     public bool _allowHit = false;
     private int _attackRandomizer;
 
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour {
 
             if (Input.GetButtonDown("Attack")) {
                 Attack();
+                _checkWindSound = true;
             }
         }
         

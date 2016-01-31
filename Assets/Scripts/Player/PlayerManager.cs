@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour {
     public bool canBeTouched = true;
 
     [HideInInspector]
-    public int playerHP = 3;
+    public int playerHP = 5;
 
     private float _invincibleCountdown = 3f;
 

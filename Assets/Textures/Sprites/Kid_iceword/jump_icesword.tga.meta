@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: 010db2b59c826bf4386408cb4ddc6097
-timeCreated: 1454237235
+timeCreated: 1454252454
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: jump_icesword_0
+    21300002: jump_icesword_1
+    21300004: jump_icesword_2
+    21300006: jump_icesword_3
+    21300008: jump_icesword_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +31,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 2048
+  textureFormat: -3
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +54,106 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: jump_icesword_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37, y: -105}
+        - {x: 43, y: -105}
+        - {x: 124, y: -52}
+        - {x: 124, y: 71}
+        - {x: -40, y: 71}
+        - {x: -40, y: -85}
+    - name: jump_icesword_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 48}
+        - {x: -52, y: 6}
+        - {x: -57, y: -22}
+        - {x: -57, y: -59}
+        - {x: -25, y: -101}
+        - {x: -8, y: -104}
+        - {x: 43, y: -104}
+        - {x: 124, y: -50}
+        - {x: 124, y: -13}
+        - {x: 69, y: 48}
+    - name: jump_icesword_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -80, y: 128}
+        - {x: -80, y: -72}
+        - {x: -79, y: -86}
+        - {x: -13, y: -86}
+        - {x: 98, y: 78}
+        - {x: 98, y: 100}
+        - {x: 54, y: 128}
+    - name: jump_icesword_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 97}
+        - {x: -57, y: 97}
+        - {x: -57, y: -104}
+        - {x: 62, y: -104}
+        - {x: 107, y: -27}
+        - {x: 107, y: 28}
+        - {x: 72, y: 83}
+    - name: jump_icesword_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 44, y: -6}
+        - {x: 37, y: -9}
+        - {x: 40, y: -7}
+        - {x: 52, y: 41}
+        - {x: 24, y: 71}
+        - {x: -16, y: 71}
+        - {x: -47, y: 52}
+        - {x: -48, y: 46}
+        - {x: -48, y: -90}
+        - {x: -26, y: -105}
+        - {x: 76, y: -105}
+        - {x: 126, y: -29}
+        - {x: 126, y: 9}
+        - {x: 82, y: 5}
     outline: []
   spritePackingTag: 
   userData: 

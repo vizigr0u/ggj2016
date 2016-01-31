@@ -9,6 +9,7 @@ TagManager:
   - Fire
   - Bush
   - Barrier
+  - Rabbit
   layers:
   - Default
   - TransparentFX

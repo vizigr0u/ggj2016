@@ -30,6 +30,12 @@ public class RabbitController : MonoBehaviour {
         _player = GameObject.Find("Player");
     }
 
+    void Update() {
+        if (GetComponent<EnemyData>()._actualHealth <= 0f) {
+            Touched();
+        }
+    }
+
     void FixedUpdate() {
         if (Vector3.Distance(transform.position, _player.transform.position) <= 4.0f && !_hasTouched) {
             _isFollowingPlayer = true;
@@ -95,12 +101,16 @@ public class RabbitController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D _col) {
         if (_col.gameObject.tag.Equals("Player") && PlayerManager.Instance.canBeTouched) {
             PlayerManager.Instance.UpdateLife(1);
-
-            _rigidbody2D.velocity = Vector2.zero;
-            _rigidbody2D.isKinematic = true;
             PlayerManager.Instance.canBeTouched = false;
-            _hasTouched = true;
+
+            Touched();
         }
+    }
+
+    public void Touched() {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.isKinematic = true;
+        _hasTouched = true;
     }
 
     public void CanBeTouched() {
