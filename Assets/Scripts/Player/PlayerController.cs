@@ -7,7 +7,11 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 700f;
     public Transform groundCheck;
     public LayerMask groundLayers;
+<<<<<<< .merge_file_a14188
     public GameObject weaponHitbox;
+=======
+    public bool CanMove = true;
+>>>>>>> .merge_file_a03156
 
     [HideInInspector]
     public bool _facingRight = true;
@@ -36,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         //inputs
-        if (_isGrounded) {
+        if (_isGrounded && CanMove) {
             if (Input.GetButtonDown("Jump")) {
                 _isJumping = true;
                 _rigidbody2D.AddForce(new Vector2(0f, jumpForce));
@@ -75,6 +79,12 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
+        if (!CanMove)
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+            _animator.SetFloat("Speed", 0f);
+            return;
+        }
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, _groundRadius, groundLayers);
 
         _animator.SetBool("Grounded", _isGrounded);

@@ -3,21 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-struct DialogConfig {
-    string textToSay;
-    float dialogLength;
-    AudioClip audio;
-}
-
-enum DialogType {
-    FirstEncounter, NotTheRightWeapon
-};
-
 public class DialogTrigger : MonoBehaviour {
+    struct DialogConfig
+    {
+        public string text;
+        public float duration;
+        public string audio;
 
-    Dictionary<DialogType, DialogConfig[]> dialogs = new Dictionary<DialogType, DialogConfig[]>();
+        public DialogConfig(string text, float duration, string audio)
+        {
+            this.text = text;
+            this.duration = duration;
+            this.audio = audio;
+        }
+    }
 
-    public List<AudioClip> audioSources;
+    public enum DialogType
+    {
+        FirstEncounter, NotTheRightWeapon
+    };
+
+    static private Dictionary<DialogType, DialogConfig[]> Dialogs = new Dictionary<DialogType, DialogConfig[]> {
+        { DialogType.FirstEncounter, new DialogConfig[] { new DialogConfig("Salut c'est moi papy", 4, "JeTeLavaisDit") } }
+    };
+    
+    public DialogType Dialog;
 
     //DEBUG//
     //public AudioClip test;
@@ -31,18 +41,9 @@ public class DialogTrigger : MonoBehaviour {
     void Start () {
         _grandFather = GameObject.Find("GrandFather");
         dialogText = GameObject.Find("Text : DialogText");
-
-       //dialogs.Add(DialogType.FirstEncounter, new DialogConfig("lol", 2f, audioSources[0]));
 	}
 
 	void Update () {
-        //DEBUG//
-        /*if (Input.GetKeyDown(KeyCode.E)) {
-            Display("Tu ne vas pas au bon endroit !", 3f);
-
-            _grandFather.GetComponent<AudioSource>().PlayOneShot(test);
-        }*/
-
         //countdown telling when to removes the displaying
         if (_countdownON) {
             _globalDialogLength -= Time.deltaTime;
@@ -56,32 +57,34 @@ public class DialogTrigger : MonoBehaviour {
         }
 	}
 
-    void OnTriggerEnter(Collider _col) {
+    void OnTriggerEnter2D(Collider2D _col) {
         if (_col.gameObject.tag.Equals("Player")) {
             //reset the fadeout bool previously changed to true
             dialogText.GetComponent<Animator>().SetBool("FadeOut", false);
-
-            //PlayDialog(dialogs[0]);
+            var configs = Dialogs[Dialog];
+            var randConfig = configs[Random.Range(0, configs.Length)];
+            PlayDialog(randConfig);
         }
     }
 
-    /*void PlayDialog(DialogConfig _config) {
-        Display(_config.textToSay, _config.dialogLength);
+    void PlayDialog(DialogConfig config) {
+        Display(config);
 
-        _grandFather.GetComponent<AudioSource>().PlayOneShot(_config.audio);
-    }*/
+        var audio = (AudioClip)Resources.Load(config.audio, typeof(AudioClip));
+        _grandFather.GetComponent<AudioSource>().PlayOneShot(audio);
+    }
 
-    void Display(string _textToSay, float _dialogLength) {
+    void Display(DialogConfig config) {
         _grandFather.GetComponent<MeshRenderer>().enabled = true;
 
         //sets the text's string
-        dialogText.GetComponent<Text>().text = _textToSay;
+        dialogText.GetComponent<Text>().text = config.text;
 
         //launches the animation
         dialogText.GetComponent<Animator>().SetBool("FadeIn", true);
 
         //sets the timer and launches it
-        _globalDialogLength = _dialogLength;
+        _globalDialogLength = config.duration;
         _countdownON = true;
     }
 }
