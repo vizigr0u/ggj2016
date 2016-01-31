@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: 1bafb1ba976628c47ae7d8f55dda097a
-timeCreated: 1454197008
+guid: 83cb1b592428272469b0fdf5667893d0
+timeCreated: 1454206158
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: wait_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,30 +27,50 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 2048
+  textureFormat: -3
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: wait_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 71}
+        - {x: -40, y: 60}
+        - {x: -40, y: -15}
+        - {x: -25, y: -97}
+        - {x: -12, y: -105}
+        - {x: 36, y: -105}
+        - {x: 41, y: -102}
+        - {x: 41, y: 60}
+        - {x: 30, y: 71}
     outline: []
   spritePackingTag: 
   userData: 
