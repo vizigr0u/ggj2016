@@ -9,6 +9,7 @@ public class RepeatSprite : MonoBehaviour {
     public float TextureSize = 1.0f;
     public bool RepeatX = true;
     public bool RepeatY = true;
+    public bool RESET = false;
     
     private MeshRenderer spriteRenderer = null;
     private static Material MaterialRef = null;
@@ -18,7 +19,7 @@ public class RepeatSprite : MonoBehaviour {
         Init();
     }
 
-    void Init()
+    void Init(bool ForceNewMat = false)
     {
         if (spriteRenderer == null)
         {
@@ -28,7 +29,7 @@ public class RepeatSprite : MonoBehaviour {
         {
             MaterialRef = (Material)Resources.Load("Materials/SpriteRepeat", typeof(Material));
         }
-        if (materialInstance == null)
+        if (materialInstance == null || ForceNewMat)
         {
             if (!Application.isPlaying)
             {
@@ -57,7 +58,8 @@ public class RepeatSprite : MonoBehaviour {
     
 	void Update () {
 #if UNITY_EDITOR
-        Init();
+        Init(RESET);
+        RESET = false;
 #endif
     }
 }
