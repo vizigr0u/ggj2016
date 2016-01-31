@@ -358,7 +358,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 5ec2294f64447ce42a074c8d802ec104, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: a05758ab198e7b94aa2ce4605977f434, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!61 &52359917
 BoxCollider2D:
@@ -5666,6 +5667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &291376420
 GameObject:
@@ -5724,6 +5726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &313904852
 GameObject:
@@ -5782,6 +5785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &322111229
 GameObject:
@@ -7678,6 +7682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1001 &387467129
 Prefab:
@@ -7890,6 +7895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &395465300
 GameObject:
@@ -8079,7 +8085,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 115606, guid: 6b491f868ef7a004595cb6c04e9dfe90, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b491f868ef7a004595cb6c04e9dfe90, type: 2}
@@ -8141,6 +8147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &502362054
 GameObject:
@@ -8199,6 +8206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &502423614
 GameObject:
@@ -16231,6 +16239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &714955606
 GameObject:
@@ -18195,6 +18204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: a05758ab198e7b94aa2ce4605977f434, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!61 &793119433
 BoxCollider2D:
@@ -18347,6 +18357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &865470027
 GameObject:
@@ -20842,6 +20853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1110355423
 GameObject:
@@ -22634,6 +22646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1160665473
 GameObject:
@@ -23529,6 +23542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1306699653
 GameObject:
@@ -23587,6 +23601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1337101148
 GameObject:
@@ -28619,7 +28634,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9aba948cb70f7a04f9731298040c1152, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1dc390171254fea45887c63f38f06f24, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
@@ -30691,6 +30706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!21 &1586739392
 Material:
@@ -31002,6 +31018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1646065817
 GameObject:
@@ -32705,6 +32722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1676054975 stripped
 GameObject:
@@ -32783,6 +32801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1710021396
 GameObject:
@@ -33060,6 +33079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1746222464
 GameObject:
@@ -34857,6 +34877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dd7a609b1c4becc469234674b65af8f4, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1797779866
 GameObject:
@@ -38767,6 +38788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 8a1abab5b6810bf409582d92fae185e3, type: 2}
+  hasHealthBar: 0
   _actualHealth: 0
 --- !u!1 &1961742735
 GameObject:

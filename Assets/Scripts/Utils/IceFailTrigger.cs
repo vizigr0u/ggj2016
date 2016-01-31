@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.ImageEffects;
-using UnityEditor.Animations;
 
 public class IceFailTrigger : MonoBehaviour {
 
     public GameObject screen169;
     public GameObject lives;
-    public AnimatorController failedAnimator;
+    public RuntimeAnimatorController failedAnimator;
 
     private bool _isTouched = false;
     private float _resetPossibilities = 5f;

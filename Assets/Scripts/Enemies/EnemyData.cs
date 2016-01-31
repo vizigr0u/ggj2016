@@ -12,12 +12,9 @@ public class EnemyData : MonoBehaviour {
 
     private float _initialLife;
 
-    void Awake() {
-        _initialLife = _actualHealth;
-    }
-
     void Start() {
-        _actualHealth = config.HealthPoints;
+         _actualHealth = config.HealthPoints;
+         _initialLife = _actualHealth;
     }
 
     void Update() {
@@ -28,7 +25,7 @@ public class EnemyData : MonoBehaviour {
 
             Destroy(gameObject);
         }
-
+        
         if (hasHealthBar) {
             transform.GetComponentInChildren<Scrollbar>().size = _actualHealth / _initialLife;
         }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshRenderer)), RequireComponent(typeof(MeshFilter))]
@@ -55,8 +57,8 @@ public class RepeatSprite : MonoBehaviour {
                 RepeatX ? transform.lossyScale.x / TextureScale.x : 1,
                 RepeatY ? transform.lossyScale.y / TextureScale.y : 1);
     }
-    
-	void Update () {
+
+    void Update() {
 #if UNITY_EDITOR
         Init(RESET);
         RESET = false;

@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour {
 
         if (SceneManager.GetActiveScene().name == "level1") {
             PlayerManager.Instance.weaponConfig = PlayerManager.Instance.weaponConfigs[1];
-            // GetComponent<PlayerController>().canJump = false;
+            GetComponent<PlayerController>().canJump = false;
         }
     }
 
@@ -66,6 +66,10 @@ public class PlayerManager : MonoBehaviour {
     }
 
     void ActualizeLife() {
+        if (playerHP <= 0) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         playerHP = Mathf.Clamp(playerHP, 0, 5);
 
         for (int i = 0; i < hpSprites.Count; i++) {
